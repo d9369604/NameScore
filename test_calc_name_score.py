@@ -16,10 +16,17 @@ class TestNameScore(unittest.TestCase):
     def test_one_large_name(self):
         self.assertEqual(351, calc_name_score(['ABCDEFGHIJKLMNOPQRSTUVWXYZ']))
 
-    def test_three_large_names(self):
-        self.assertEqual(2106, calc_name_score(['ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-                                                'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-                                                'ABCDEFGHIJKLMNOPQRSTUVWXYZ']))
+    def test_many_large_names(self):
+        self.assertEqual(19305, calc_name_score(['ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ']))
 
     def test_many_names(self):
         self.assertEqual(21320, calc_name_score(['Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z',
