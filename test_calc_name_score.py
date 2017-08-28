@@ -4,29 +4,29 @@ from calc_name_score import calc_name_score
 
 class TestNameScore(unittest.TestCase):
 
-    def test_empty_file_name_score(self):
-        self.assertEqual(0, calc_name_score('empty.txt'))
+    def test_no_name(self):
+        self.assertEqual(0, calc_name_score(['']))
 
-    def test_one_character_name_score(self):
-        self.assertEqual(1, calc_name_score('one_character.txt'))
+    def test_one_name(self):
+        self.assertEqual(6, calc_name_score(['ABC']))
 
-    def test_name_score(self):
-        self.assertEqual(150, calc_name_score('contexts.txt'))
+    def test_normal_case(self):
+        self.assertEqual(150, calc_name_score(['CDEF', 'ABC', 'FIJK']))
 
-    def test_no_such_file(self):
-        self.assertRaises(IOError, calc_name_score, 'no_such_file.txt')
+    def test_one_large_name(self):
+        self.assertEqual(351, calc_name_score(['ABCDEFGHIJKLMNOPQRSTUVWXYZ']))
 
-    def test_wrong_format_with_number(self):
-        self.assertRaises(Exception, calc_name_score, 'wrong_format_with_number.txt')
+    def test_three_large_names(self):
+        self.assertEqual(2106, calc_name_score(['ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                                'ABCDEFGHIJKLMNOPQRSTUVWXYZ']))
 
-    def test_wrong_format_with_lower_case(self):
-        self.assertRaises(Exception, calc_name_score, 'wrong_format_with_lower_case.txt')
-
-    def test_wrong_format_with_new_line(self):
-        self.assertRaises(Exception, calc_name_score, 'wrong_format_with_new_line.txt')
-
-    def test_duplicated_string(self):
-        self.assertRaises(Exception, calc_name_score, 'duplicated_string.txt')
+    def test_many_names(self):
+        self.assertEqual(21320, calc_name_score(['Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z',
+                                                 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z',
+                                                 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z',
+                                                 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z',
+                                                 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z', 'Z']))
 
 if __name__ == '__main__':
     unittest.main()
